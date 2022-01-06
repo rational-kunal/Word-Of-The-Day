@@ -1,0 +1,17 @@
+{
+  "name": "word-of-the-day",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel watch manifest.json --config @parcel/config-webextension",
+    "build": "parcel build manifest.json --config @parcel/config-webextension",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@parcel/config-webextension": "^2.1.0",
+    "parcel": "^2.1.0"
+  }
+}
