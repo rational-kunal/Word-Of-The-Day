@@ -1,0 +1,10 @@
+{
+  "manifest_version": 2,
+  "name": "Word Of The Day",
+  "version": "0.01",
+  "description": "Word Of The Day.",
+  "author": "Kunal Kamble",
+  "chrome_url_overrides": {
+    "newtab": "/src/index.html"
+  }
+}
