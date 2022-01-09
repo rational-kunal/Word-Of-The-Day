@@ -3,16 +3,56 @@
     <meta charset="utf-8" />
     <title>Word Of The Day</title>
     <meta name="description" content="Word Of The Day" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <div id="main">
-      <h1 id="word-main">Loading...</h1>
-      <span id="word-attr">Attributes</span>
-      <span id="word-syllables">Syllables</span>
-      <p id="word-meaning">Meaning</p>
+    <div class="main">
+      <!-- Left Side -->
+      <div class="side align-left">
+        <div class="word-card">
+          <div class="word-hint-box">
+            <span class="word-hint align-left">Word of the Day</span>
+            <span class="word-hint align-right" id="word-date" />
+          </div>
+
+          <div class="word-content">
+            <!-- Word of the day -->
+            <h1 class="word-main" id="word-main">Loading...</h1>
+
+            <!-- Word Attributes and Syllables -->
+            <em class="word-all-attr">
+              <span id="word-attr">Attributes</span>
+              &bull; [<span id="word-syllables">Syllables</span>]
+            </em>
+
+            <hr class="word-divider" />
+
+            <!-- Word Meaning -->
+            <p class="word-meaning" id="word-meaning">Meaning</p>
+          </div>
+        </div>
+      </div>
+      <!-- End Left Side -->
+
+      <!-- Right Side -->
+      <div class="side align-right">
+        <div class="example-card">
+          <p class="example" id="word-example">Example</p>
+        </div>
+      </div>
+      <!-- End Right Side -->
     </div>
+
     <script src="script.js" type="module"></script>
   </body>
 </html>
