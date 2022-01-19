@@ -30,6 +30,7 @@ const getWordOfTheDay = async () => {
     syllables: innerTextForQuery(WORD_OF_THE_DAY_QUERY.syllables),
     meaning: innerTextForQuery(WORD_OF_THE_DAY_QUERY.meaning), // TODO: Get the complete meaning
     example: innerTextForQuery(WORD_OF_THE_DAY_QUERY.example),
+    date: new Date().toDateString(),
   }
 }
 
