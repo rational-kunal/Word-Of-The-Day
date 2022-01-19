@@ -519,6 +519,7 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"i8ewE":[function(require,module,exports) {
+var _storage = require("./storage");
 var _wordy = require("./wordy");
 const WORD_MAIN_ID = 'word-main';
 const WORD_ATTRIBUTE_ID = 'word-attr';
@@ -526,25 +527,32 @@ const WORD_SYLLABLES_ID = 'word-syllables';
 const WORD_MEANING_ID = 'word-meaning';
 const WORD_DATE_ID = 'word-date';
 const WORD_EXAMPLE_ID = 'word-example';
-function onLoad() {
-    const wordMainEl = document.getElementById(WORD_MAIN_ID);
-    const wordAttributeEl = document.getElementById(WORD_ATTRIBUTE_ID);
-    const wordSyllablesEl = document.getElementById(WORD_SYLLABLES_ID);
-    const wordMeaningEl = document.getElementById(WORD_MEANING_ID);
-    const wordDateEl = document.getElementById(WORD_DATE_ID);
-    const wordExampleEl = document.getElementById(WORD_EXAMPLE_ID);
+const updateUI = (wordOfTheDay)=>{
+    document.getElementById(WORD_DATE_ID).innerText = wordOfTheDay.date;
+    document.getElementById(WORD_MAIN_ID).innerText = wordOfTheDay.word;
+    document.getElementById(WORD_ATTRIBUTE_ID).innerText = wordOfTheDay.attribute;
+    document.getElementById(WORD_SYLLABLES_ID).innerText = wordOfTheDay.syllables;
+    document.getElementById(WORD_MEANING_ID).innerHTML = wordOfTheDay.meaning;
+    document.getElementById(WORD_EXAMPLE_ID).innerHTML = wordOfTheDay.example;
+};
+async function onLoad() {
+    const recentWordOfTheDay = await _storage.getRecentWordOfTheDay();
+    const todaysDate = new Date().toDateString();
+    if (recentWordOfTheDay.date === todaysDate) {
+        // TODO: Add 'offline' to date if its using recent Word of the Day
+        updateUI(recentWordOfTheDay);
+        return;
+    }
     _wordy.getWordOfTheDay().then((wordOfTheDay)=>{
-        wordDateEl.innerText = new Date().toDateString();
-        wordMainEl.innerText = wordOfTheDay.word;
-        wordAttributeEl.innerText = wordOfTheDay.attribute;
-        wordSyllablesEl.innerText = wordOfTheDay.syllables;
-        wordMeaningEl.innerHTML = wordOfTheDay.meaning;
-        wordExampleEl.innerHTML = wordOfTheDay.example;
+        updateUI(wordOfTheDay);
+        _storage.setRecentWordOfTheDay(JSON.stringify(wordOfTheDay));
+    }).catch(()=>{
+        updateUI(recentWordOfTheDay);
     });
 }
 onLoad();
 
-},{"./wordy":"b7n0s"}],"b7n0s":[function(require,module,exports) {
+},{"./wordy":"b7n0s","./storage":"9vIlC"}],"b7n0s":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getWordOfTheDay", ()=>getWordOfTheDay
@@ -574,7 +582,8 @@ const getWordOfTheDay = async ()=>{
         attribute: innerTextForQuery(WORD_OF_THE_DAY_QUERY.attribute),
         syllables: innerTextForQuery(WORD_OF_THE_DAY_QUERY.syllables),
         meaning: innerTextForQuery(WORD_OF_THE_DAY_QUERY.meaning),
-        example: innerTextForQuery(WORD_OF_THE_DAY_QUERY.example)
+        example: innerTextForQuery(WORD_OF_THE_DAY_QUERY.example),
+        date: new Date().toDateString()
     };
 };
 
@@ -608,6 +617,38 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["7JHG3","i8ewE"], "i8ewE", "parcelRequirecd19")
+},{}],"9vIlC":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getRecentWordOfTheDay", ()=>getRecentWordOfTheDay
+);
+parcelHelpers.export(exports, "setRecentWordOfTheDay", ()=>setRecentWordOfTheDay
+);
+const RECENT_WORD_OF_THE_DAY_KEY = 'RECENT_WORD_OF_THE_DAY_KEY';
+const FALLBACK_WORD_OF_THE_DAY = {
+    word: 'Offline',
+    attribute: 'Error',
+    syllables: '💭',
+    meaning: 'You are currently offline.',
+    example: '',
+    date: ''
+};
+const getRecentWordOfTheDay = async ()=>{
+    return new Promise((resolve)=>{
+        chrome.storage.local.get([
+            RECENT_WORD_OF_THE_DAY_KEY
+        ], (result)=>{
+            if (result[RECENT_WORD_OF_THE_DAY_KEY] === undefined) resolve(FALLBACK_WORD_OF_THE_DAY);
+            else resolve(JSON.parse(result[RECENT_WORD_OF_THE_DAY_KEY]));
+        });
+    });
+};
+const setRecentWordOfTheDay = async (wordOfTheDay)=>{
+    chrome.storage.local.set({
+        RECENT_WORD_OF_THE_DAY_KEY: wordOfTheDay
+    });
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["7JHG3","i8ewE"], "i8ewE", "parcelRequirecd19")
 
 //# sourceMappingURL=index.c05ff127.js.map
