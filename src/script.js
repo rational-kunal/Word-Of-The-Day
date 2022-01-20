@@ -7,6 +7,7 @@ const WORD_SYLLABLES_ID = 'word-syllables'
 const WORD_MEANING_ID = 'word-meaning'
 const WORD_DATE_ID = 'word-date'
 const WORD_EXAMPLE_ID = 'word-example'
+const ARCHIVED = 'Archived'
 
 const updateUI = (wordOfTheDay) => {
   document.getElementById(WORD_DATE_ID).innerText = wordOfTheDay.date
@@ -22,7 +23,6 @@ async function onLoad() {
   const todaysDate = new Date().toDateString()
 
   if (recentWordOfTheDay.date === todaysDate) {
-    // TODO: Add 'offline' to date if its using recent Word of the Day
     updateUI(recentWordOfTheDay)
     return
   }
@@ -33,6 +33,7 @@ async function onLoad() {
       setRecentWordOfTheDay(JSON.stringify(wordOfTheDay))
     })
     .catch(() => {
+      recentWordOfTheDay.date = ARCHIVED
       updateUI(recentWordOfTheDay)
     })
 }
