@@ -1,1 +1,0 @@
-{"mappings":"SAASA,SACPC,QAAQC,IAAI","sources":["src/script.js"],"sourcesContent":["function onLoad() {\n  console.log('Hello World')\n}\n"],"names":["onLoad","console","log"],"version":3,"file":"index.e618fa22.js.map"}

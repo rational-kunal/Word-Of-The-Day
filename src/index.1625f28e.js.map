@@ -1,1 +1,0 @@
-{"mappings":"SAAS,MAAM,GAAG,CAAC;IACjB,OAAO,CAAC,GAAG,CAAC,CAAa;AAC3B,CAAC;AAED,MAAM","sources":["src/script.js"],"sourcesContent":["function onLoad() {\n  console.log('Hello World')\n}\n\nonLoad()\n"],"names":[],"version":3,"file":"index.1625f28e.js.map","sourceRoot":"../../"}
