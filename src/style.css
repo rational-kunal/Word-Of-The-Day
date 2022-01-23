@@ -1,6 +1,6 @@
 :root {
-  --card-width: 400px;
-  --card-top-spacing: 18%;
+  --card-width: 360px;
+  --card-top-spacing: 15%;
 
   --font-size-normal: 14px;
   --font-size-medium: 18px;
@@ -29,6 +29,13 @@
   background-color: var(--background-color);
 }
 
+@media only screen and (max-device-width: 768px) {
+  /* Grid should have single column for smaller screens. */
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Word of the Day Card */
 .word-card {
   display: grid;
@@ -40,6 +47,14 @@
   background-color: #ebebeb;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+@media only screen and (max-device-width: 768px) {
+  /* Word card should be centered for smaller screens. */
+  .word-card {
+    width: auto;
+    justify-self: center;
+  }
 }
 
 .word-hint-wrapper {
@@ -98,6 +113,13 @@
   width: var(--card-width);
   margin-top: var(--card-top-spacing);
   padding: 24px;
+}
+
+@media only screen and (max-device-width: 768px) {
+  /* Hide example card for smaller screens. */
+  .example-card {
+    opacity: 0;
+  }
 }
 
 .example {
