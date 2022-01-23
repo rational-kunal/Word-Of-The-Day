@@ -18,37 +18,31 @@
   <body>
     <div class="main">
       <!-- Left Side -->
-      <div class="side align-left">
-        <div class="word-card">
-          <div class="word-hint-box">
-            <span class="word-hint align-left">Word of the Day</span>
-            <span class="word-hint align-right" id="word-date" />
-          </div>
-
-          <div class="word-content">
-            <!-- Word of the day -->
-            <h1 class="word-main" id="word-main">Loading...</h1>
-
-            <!-- Word Attributes and Syllables -->
-            <em class="word-all-attr">
-              <span id="word-attr">Attributes</span>
-              &bull; [<span id="word-syllables">Syllables</span>]
-            </em>
-
-            <hr class="word-divider" />
-
-            <!-- Word Meaning -->
-            <p class="word-meaning" id="word-meaning">Meaning</p>
-          </div>
+      <div class="word-card">
+        <div class="word-hint-wrapper">
+          <span class="word-hint">Word of the Day</span>
+          <span class="word-hint word-date" id="word-date" />
         </div>
+
+        <!-- Word of the day -->
+        <h1 class="word-main" id="word-main">Loading...</h1>
+
+        <!-- Word Attributes and Syllables -->
+        <em class="word-attr-wrapper">
+          <span id="word-attr">Attributes</span>
+          &bull; [<span id="word-syllables">Syllables</span>]
+        </em>
+
+        <hr class="word-divider" />
+
+        <!-- Word Meaning -->
+        <p class="word-meaning" id="word-meaning">Meaning</p>
       </div>
       <!-- End Left Side -->
 
       <!-- Right Side -->
-      <div class="side align-right">
-        <div class="example-card">
-          <p class="example" id="word-example">Example</p>
-        </div>
+      <div class="example-card">
+        <p class="example" id="word-example">Example</p>
       </div>
       <!-- End Right Side -->
     </div>
