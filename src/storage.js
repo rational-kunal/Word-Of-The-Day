@@ -8,9 +8,20 @@ const FALLBACK_WORD_OF_THE_DAY = {
   date: '',
 }
 
+const isChromeStorageAvailable =
+  window.chrome !== undefined && window.chrome.storage !== undefined
+// Chrome object is not completely available on websites.
+// Fallback storage if chrome is not available.
+const storage = isChromeStorageAvailable
+  ? window.chrome.storage.local
+  : {
+      get: (_, callback) => callback(FALLBACK_WORD_OF_THE_DAY),
+      set: (_) => {},
+    }
+
 const getRecentWordOfTheDay = async () => {
   return new Promise((resolve) => {
-    chrome.storage.local.get([RECENT_WORD_OF_THE_DAY_KEY], (result) => {
+    storage.get([RECENT_WORD_OF_THE_DAY_KEY], (result) => {
       if (result[RECENT_WORD_OF_THE_DAY_KEY] === undefined) {
         resolve(FALLBACK_WORD_OF_THE_DAY)
       } else {

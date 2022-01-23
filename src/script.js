@@ -38,4 +38,6 @@ async function onLoad() {
     })
 }
 
-onLoad()
+window.onload = () => {
+  onLoad()
+}
