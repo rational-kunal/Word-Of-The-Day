@@ -9,11 +9,12 @@
   --font-size-medium: 18px;
   --font-size-large: 64px;
 
-  --background-color: #f9c5d1;
-  --background-color-accent: #f46e6f;
-  --primary-color: #2e3359;
-  --secondary-color: #148c8a;
-  --divider-color: #363636;
+  --background-color: #ff3b3f;
+  --background-color-accent: #efefef;
+  --hero-color: #ff3b3f;
+  --primary-color: #a9a9a9;
+  --secondary-color: #efefef;
+  --divider-color: #a9a9a9;
 }
 
 * {
@@ -81,7 +82,7 @@
   margin-top: 64px;
   margin-bottom: 8px;
   font-size: var(--font-size-large);
-  color: var(--primary-color);
+  color: var(--hero-color);
   font-family: 'Playfair Display', serif;
   line-height: var(--font-size-large);
   height: var(--font-size-large);
@@ -119,6 +120,12 @@
   margin-top: var(--card-top-spacing);
   padding: 24px;
   font-family: var(--font-family-secondary);
+  opacity: 0.3;
+}
+
+.example-card:hover,
+.word-card:hover ~ .example-card {
+  opacity: 1;
 }
 
 @media only screen and (max-device-width: 768px) {
