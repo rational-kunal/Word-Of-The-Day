@@ -1,3 +1,5 @@
+import storage from './storage'
+
 const WORD_OF_THE_DAY_URL = 'https://www.merriam-webster.com/word-of-the-day'
 const WORD_OF_THE_DAY_QUERY = {
   word: 'div.quick-def-box div.word-header div.word-and-pronunciation h1',
@@ -8,20 +10,18 @@ const WORD_OF_THE_DAY_QUERY = {
     'div.wod-article-container div.wod-definition-container div.wotd-examples div.left-content-box p',
 }
 
-const getWordOfTheDay = async () => {
+const getWordOfTheDayOverInternet = async () => {
   const wordOfTheDayRequest = new Request(WORD_OF_THE_DAY_URL)
   const response = await fetch(wordOfTheDayRequest)
   const responseText = await response.text()
 
-  let parser = new DOMParser()
-  let doc = parser.parseFromString(responseText, 'text/html')
+  let domFromResponse = new DOMParser().parseFromString(
+    responseText,
+    'text/html'
+  )
 
   const innerTextForQuery = (query) => {
-    return doc.querySelector(query).innerHTML
-  }
-
-  const htmlForQuery = (query) => {
-    return doc.querySelector(query)
+    return domFromResponse.querySelector(query).innerHTML
   }
 
   return {
@@ -34,4 +34,24 @@ const getWordOfTheDay = async () => {
   }
 }
 
-export { getWordOfTheDay }
+// Returns today's or recently archived word of the day.
+// If the extension is online it will return today's word of the day.
+// Else if extension is offline then it will return recently archived word of the day.
+const getMostRecentWordOfTheDay = async () => {
+  const recentWordOfTheDay = await storage.getRecentWordOfTheDay()
+  const todaysDate = new Date().toDateString()
+
+  if (recentWordOfTheDay.date === todaysDate) {
+    return recentWordOfTheDay
+  }
+
+  try {
+    const wordOfTheDay = await getWordOfTheDayOverInternet()
+    storage.setRecentWordOfTheDay(wordOfTheDay)
+    return wordOfTheDay
+  } catch {
+    return recentWordOfTheDay
+  }
+}
+
+export { getMostRecentWordOfTheDay }
