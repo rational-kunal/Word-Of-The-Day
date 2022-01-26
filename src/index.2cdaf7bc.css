@@ -1,0 +1,158 @@
+:root {
+  --card-width: 360px;
+
+  --font-family-primary: 'Playfair Display', serif;
+  --font-family-secondary: 'Montserrat', sans-serif;
+
+  --font-size-normal: 14px;
+  --font-size-medium: 18px;
+  --font-size-large: 64px;
+
+  --background-color: #ff3b3f;
+  --background-color-accent: #efefef;
+  --hero-color: #ff3b3f;
+  --primary-color: #a9a9a9;
+  --secondary-color: #efefef;
+  --divider-color: #a9a9a9;
+}
+
+@media only screen and (max-device-width: 768px) {
+  :root {
+    --card-width: 75%;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--background-color);
+}
+
+.main {
+  justify-self: center;
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+}
+
+@media only screen and (max-device-width: 768px) {
+  /* Grid should have single column for smaller screens. */
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Word of the Day Card */
+.word-card {
+  display: grid;
+  width: var(--card-width);
+  height: fit-content;
+  justify-self: end;
+  padding: 24px;
+  background-color: var(--background-color-accent);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  font-family: var(--font-family-secondary);
+}
+
+@media only screen and (max-device-width: 768px) {
+  /* Word card should be centered for smaller screens. */
+  .word-card {
+    justify-self: center;
+  }
+}
+
+.word-hint-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 1.2rem;
+}
+
+.word-hint {
+  font-size: var(--font-size-normal);
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.word-date {
+  justify-self: end;
+}
+
+.word-main {
+  margin-top: 64px;
+  margin-bottom: 8px;
+  font-size: var(--font-size-large);
+  color: var(--hero-color);
+  font-family: 'Playfair Display', serif;
+  line-height: var(--font-size-large);
+  height: var(--font-size-large);
+}
+
+.word-main::first-letter {
+  text-transform: capitalize;
+}
+
+.word-attr-wrapper {
+  font-size: var(--font-size-normal);
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.word-divider {
+  width: 50%;
+  border: none;
+  height: 2px;
+  margin-top: 8px;
+  margin-bottom: 24px;
+  background-color: var(--divider-color);
+}
+
+.word-meaning {
+  font-size: var(--font-size-medium);
+  color: var(--primary-color);
+}
+
+/* Example Card */
+.example-card {
+  justify-self: start;
+  height: fit-content;
+  width: var(--card-width);
+  padding: 24px;
+  font-family: var(--font-family-secondary);
+  opacity: 0.3;
+}
+
+.example-card:hover,
+.word-card:hover ~ .example-card {
+  opacity: 1;
+}
+
+@media only screen and (max-device-width: 768px) {
+  /* Example card should be centered for smaller screens. */
+  .example-card {
+    justify-self: center;
+  }
+}
+
+.example {
+  font-size: var(--font-size-medium);
+  font-weight: 500;
+  color: var(--secondary-color);
+}
+
+.example > a {
+  color: var(--secondary-color);
+}
+
+/*# sourceMappingURL=index.2cdaf7bc.css.map */
