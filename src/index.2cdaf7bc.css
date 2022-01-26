@@ -4,9 +4,9 @@
   --font-family-primary: 'Playfair Display', serif;
   --font-family-secondary: 'Montserrat', sans-serif;
 
-  --font-size-normal: 14px;
-  --font-size-medium: 18px;
-  --font-size-large: 64px;
+  --font-size-normal: 1rem;
+  --font-size-medium: 1.2rem;
+  --font-size-large: 5rem;
 
   --background-color: #ff3b3f;
   --background-color-accent: #efefef;
@@ -16,7 +16,7 @@
   --divider-color: #a9a9a9;
 }
 
-@media only screen and (max-device-width: 768px) {
+@media only screen and (max-width: 768px) {
   :root {
     --card-width: 75%;
   }
@@ -44,9 +44,10 @@ body {
   position: relative;
   height: fit-content;
   width: fit-content;
+  margin: 8px;
 }
 
-@media only screen and (max-device-width: 768px) {
+@media only screen and (max-width: 768px) {
   /* Grid should have single column for smaller screens. */
   .main {
     grid-template-columns: 1fr;
@@ -56,7 +57,7 @@ body {
 /* Word of the Day Card */
 .word-card {
   display: grid;
-  width: var(--card-width);
+  min-width: var(--card-width);
   height: fit-content;
   justify-self: end;
   padding: 24px;
@@ -64,11 +65,13 @@ body {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   font-family: var(--font-family-secondary);
+  border-radius: 8px;
 }
 
-@media only screen and (max-device-width: 768px) {
+@media only screen and (max-width: 768px) {
   /* Word card should be centered for smaller screens. */
   .word-card {
+    min-width: 0;
     justify-self: center;
   }
 }
@@ -94,7 +97,7 @@ body {
   margin-bottom: 8px;
   font-size: var(--font-size-large);
   color: var(--hero-color);
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-family-primary);
   line-height: var(--font-size-large);
   height: var(--font-size-large);
 }
@@ -121,13 +124,14 @@ body {
 .word-meaning {
   font-size: var(--font-size-medium);
   color: var(--primary-color);
+  width: var(--card-width);
 }
 
 /* Example Card */
 .example-card {
   justify-self: start;
   height: fit-content;
-  width: var(--card-width);
+  max-width: var(--card-width);
   padding: 24px;
   font-family: var(--font-family-secondary);
   opacity: 0.3;
@@ -138,7 +142,7 @@ body {
   opacity: 1;
 }
 
-@media only screen and (max-device-width: 768px) {
+@media only screen and (max-width: 768px) {
   /* Example card should be centered for smaller screens. */
   .example-card {
     justify-self: center;
@@ -146,7 +150,7 @@ body {
 }
 
 .example {
-  font-size: var(--font-size-medium);
+  font-size: var(--font-size-normal);
   font-weight: 500;
   color: var(--secondary-color);
 }
