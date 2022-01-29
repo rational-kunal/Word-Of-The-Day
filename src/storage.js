@@ -25,7 +25,7 @@ const getRecentWordOfTheDay = async () => {
       if (result[RECENT_WORD_OF_THE_DAY_KEY] === undefined) {
         resolve(FALLBACK_WORD_OF_THE_DAY)
       } else {
-        resolve(JSON.parse(result[RECENT_WORD_OF_THE_DAY_KEY]))
+        resolve(result[RECENT_WORD_OF_THE_DAY_KEY])
       }
     })
   })
