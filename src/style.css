@@ -32,8 +32,7 @@ body {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  /* Body does not have the designated background color initially */
-  /* background-color: var(--background-color); */
+  background-color: #ff6265;
 }
 
 .loader {
