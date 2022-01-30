@@ -32,7 +32,16 @@ body {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  /* Body does not have the designated background color initially */
+  /* background-color: var(--background-color); */
+}
+
+.loader {
+  position: absolute;
+  justify-self: center;
+  align-self: center;
   background-color: var(--background-color);
+  border-radius: 100%;
 }
 
 .main {
@@ -45,6 +54,11 @@ body {
   height: fit-content;
   width: fit-content;
   margin: 8px;
+}
+
+/* Initially main container should not be visible */
+.main {
+  display: none;
 }
 
 @media only screen and (max-width: 768px) {

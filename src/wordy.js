@@ -1,4 +1,5 @@
 import storage from './storage'
+import { noop } from './util'
 
 const WORD_OF_THE_DAY_URL = 'https://www.merriam-webster.com/word-of-the-day'
 const WORD_OF_THE_DAY_QUERY = {
@@ -37,13 +38,15 @@ const getWordOfTheDayOverInternet = async () => {
 // Returns today's or recently archived word of the day.
 // If the extension is online it will return today's word of the day.
 // Else if extension is offline then it will return recently archived word of the day.
-const getMostRecentWordOfTheDay = async () => {
+const getMostRecentWordOfTheDay = async (isWordPreloadedCallback = noop) => {
   const recentWordOfTheDay = await storage.getRecentWordOfTheDay()
   const todaysDate = new Date().toDateString()
 
   if (recentWordOfTheDay.date === todaysDate) {
+    isWordPreloadedCallback(true)
     return recentWordOfTheDay
   }
+  isWordPreloadedCallback(false)
 
   try {
     const wordOfTheDay = await getWordOfTheDayOverInternet()

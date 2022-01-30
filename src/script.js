@@ -1,4 +1,6 @@
 import { getMostRecentWordOfTheDay } from './wordy'
+import { $ } from './util'
+import { animator } from './animations'
 
 const WORD_MAIN_ID = 'word-main'
 const WORD_ATTRIBUTE_ID = 'word-attr'
@@ -7,9 +9,6 @@ const WORD_MEANING_ID = 'word-meaning'
 const WORD_DATE_ID = 'word-date'
 const WORD_EXAMPLE_ID = 'word-example'
 const ARCHIVED = 'Archived'
-
-// Short hand for getElementById
-const $ = (id) => document.getElementById(id)
 
 const updateUIForWordOfTheDay = async (wordOfTheDay) => {
   const todaysDate = new Date().toDateString()
@@ -23,8 +22,15 @@ const updateUIForWordOfTheDay = async (wordOfTheDay) => {
 }
 
 async function onWindowLoad() {
-  const wordOfTheDay = await getMostRecentWordOfTheDay()
+  const wordOfTheDay = await getMostRecentWordOfTheDay((preloaded) => {
+    animator.initiateLoaderOnScreen(preloaded)
+    animator.startLoading()
+  })
+
   updateUIForWordOfTheDay(wordOfTheDay)
+
+  animator.stopThenHideLoading()
+  animator.initiateMainComponent()
 }
 
 window.onload = async () => {

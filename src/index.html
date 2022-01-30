@@ -17,10 +17,14 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body>
-    <div class="main">
+  <body id="body">
+    <!-- Loader / Entry animation -->
+    <div class="loader" id="loader"></div>
+
+    <!-- Main component which has Word of The Day information -->
+    <div class="main" id="main">
       <!-- Left Side -->
-      <div class="word-card">
+      <div class="word-card" id="word-card">
         <div class="word-hint-wrapper">
           <span class="word-hint">Word of the Day</span>
           <span class="word-hint word-date" id="word-date" />
@@ -43,7 +47,7 @@
       <!-- End Left Side -->
 
       <!-- Right Side -->
-      <div class="example-card">
+      <div class="example-card" id="example-card">
         <p class="example" id="word-example">Example</p>
       </div>
       <!-- End Right Side -->
