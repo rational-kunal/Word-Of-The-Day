@@ -21,8 +21,12 @@ const updateUIForWordOfTheDay = async (wordOfTheDay) => {
   $(WORD_EXAMPLE_ID).innerHTML = wordOfTheDay.example
 }
 
+const SHORT_DELAY = 1000
+
 async function onWindowLoad() {
+  let isPreloaded = false
   const wordOfTheDay = await getMostRecentWordOfTheDay((preloaded) => {
+    isPreloaded = preloaded
     animator.initiateLoaderOnScreen(preloaded)
     animator.startLoading()
   })
@@ -30,7 +34,11 @@ async function onWindowLoad() {
   updateUIForWordOfTheDay(wordOfTheDay)
 
   animator.stopThenHideLoading()
-  animator.initiateMainComponent()
+  // Add delay to Main component for smoother transition.
+  setTimeout(
+    () => animator.initiateMainComponent(),
+    isPreloaded ? 0 : SHORT_DELAY
+  )
 }
 
 window.onload = async () => {
