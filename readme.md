@@ -11,7 +11,7 @@
   <p align="center">
     A new word to learn everyday.
     <br />
-    <a href="https://rational-kunal.github.io/Word-Of-The-Dayw">View as a Website 🌐</a>
+    <a href="https://rational-kunal.github.io/Word-Of-The-Day">View as a Website 🌐</a>
     ·
     <a href="https://github.com/rational-kunal/Word-Of-The-Day/issues">Report Bug 🐛</a>
     ·
