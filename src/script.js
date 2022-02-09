@@ -13,7 +13,7 @@ const ARCHIVED = 'Archived'
 const updateUIForWordOfTheDay = async (wordOfTheDay) => {
   const todaysDate = new Date().toDateString()
   const isArchived = todaysDate !== wordOfTheDay.date
-  $(WORD_DATE_ID).innerText = isArchived ? wordOfTheDay.date : ARCHIVED
+  $(WORD_DATE_ID).innerText = isArchived ? ARCHIVED : wordOfTheDay.date
   $(WORD_MAIN_ID).innerText = wordOfTheDay.word
   $(WORD_ATTRIBUTE_ID).innerText = wordOfTheDay.attribute
   $(WORD_SYLLABLES_ID).innerText = wordOfTheDay.syllables
