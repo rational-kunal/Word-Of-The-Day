@@ -1,4 +1,7 @@
-- [ ] TODO: Add https://shields.io/ badges.
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rational-kunal/Word-Of-The-Day/Node.js%20CI?style=for-the-badge)](https://github.com/rational-kunal/Word-Of-The-Day/actions/workflows/node.js.yml)
+[![GitHub issues](https://img.shields.io/github/issues/rational-kunal/Word-Of-The-Day?style=for-the-badge)](https://github.com/rational-kunal/Word-Of-The-Day/issues?q=is%3Aopen+is%3Aissue)
+[![Twitter Follow](https://img.shields.io/twitter/follow/rational_kunal?style=for-the-badge)](https://twitter.com/rational_kunal)
+[![GitHub followers](https://img.shields.io/github/followers/rational-kunal?style=for-the-badge)](https://github.com/rational-kunal)
 
 <br />
 <div align="center">
@@ -19,43 +22,55 @@
   </p>
 </div>
 
-
 ## About
-See **Word of the Day** everyday on a New Tab.
-Assumption is that you will surely learn the word once you see it throught the day.
+
+See **Word of the Day** every day on a New Tab.
+The assumption is that you will surely learn a new word once you see it throughout the day.
 
 My main motivation is to expand my own vocabulary.
-So please don't expect any other features.
-But I am happy to implement any need-to-have Quality of Life features.
-Once I got some free time to do it (still have many pending projects 😅!).
+So please don't expect any other out-of-the-box features.
+But I am happy to implement any essential Quality of Life features.
+If and when I got some free time to do them (planning to work on some other noteworthy projects 😎🤞).
 
-- [ ] TODO: Screenshots/Video
+![screenshot](https://user-images.githubusercontent.com/28783605/153247797-febf4523-32ca-4797-9a6e-d902f4db5ba6.png)
 
 ## How to install
+
 1. Clone the repository.
+
 ```
 git clone https://github.com/rational-kunal/Word-Of-The-Day.git
 ```
-2. Change directory to cloned repository.
+
+2. Change the directory to the cloned repository.
+
 ```
 cd Word-Of-The-Day
 ```
-3. Install dependecies.
+
+3. Install dependencies.
+
 ```
 npm ci
 ```
-4. Build sorce code. This should create a `dist` folder.
+
+4. Build source code. This should create a `dist` folder.
+
 ```
 npm run build
 ```
-5. Go to `chrome://extensions/` on chrome browser.
-6. Make sure Developer mode is checked.
-7. Click on `Load Extensions`.
-8. Select the dist folder.
+
+5. Go to `chrome://extensions` on the chrome browser.
+6. Make sure `Developer mode` is checked.
+7. Click on `Load unpacked Extensions`.
+8. Select the `dist` folder.
 9. Open a new tab and check that the Word of the Day appears.
 
 ## How it works
-Word of the Day is fetched (webscraped) from [merriam-webster.com/word-of-the-day](https://www.merriam-webster.com/word-of-the-day). To minimise repetative webscraping the Extention will store recent Word of the Day in local storage. To ensure that webscraping still works correctly, tests runs every other day.
+
+- Word of the Day is fetched (i.e. web scraped) from [merriam-webster.com/word-of-the-day](https://www.merriam-webster.com/word-of-the-day).
+- To minimize repetitive web scraping, the Extension will **store recent Word of the Day in local storage**.
+- To ensure that web scraping still works correctly, tests on the parsing logic are scheduled to run every other day.
 
 ---
 
