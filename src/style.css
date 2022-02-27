@@ -140,6 +140,10 @@ body {
   width: var(--card-width);
 }
 
+.word-meaning > a {
+  color: var(--primary-color);
+}
+
 /* Example Card */
 .example-card {
   justify-self: start;
